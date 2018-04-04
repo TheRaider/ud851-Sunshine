@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.example.android.sunshine.data.SunshinePreferences;
 import com.example.android.sunshine.utilities.NetworkUtils;
 
 import java.io.IOException;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     // COMPLETED (8) Create a method that will get the user's preferred location and execute your new AsyncTask and call it loadWeatherData
     public void loadWeatherData(){
-        String location = "Dhanbad";
+        String location = SunshinePreferences.getPreferredWeatherLocation(this);
         URL url = NetworkUtils.buildUrl(location);
         new FetchWeatherTask().execute(url);
     }
